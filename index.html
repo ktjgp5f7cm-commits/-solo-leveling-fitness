@@ -778,16 +778,31 @@ return new Date().toISOString().slice(0,10);
 
 function checkNewDay(){
 
+if(!data.daily){
+
+data.daily={
+pompes:0,
+squats:0,
+abdos:0,
+marche:0
+};
+
+}
+
 if(data.lastDay!==today()){
 
-data.completed={
-pompes:false,
-squats:false,
-abdos:false,
-marche:false
+data.daily={
+pompes:0,
+squats:0,
+abdos:0,
+marche:0
 };
 
 data.water=0;
+
+data.lastDay=today();
+
+save();
 
 }
 
@@ -987,19 +1002,36 @@ let input=document.getElementById(name+"Input");
 
 let button=input.parentElement.querySelector("button");
 
-if(data.completed[name]){
+let total=data.daily ? (data.daily[name] || 0) : 0;
 
-button.textContent="✓ FAIT";
-button.disabled=true;
-button.style.opacity=".5";
+let objective={
+pompes:20,
+squats:30,
+abdos:20,
+marche:20
+};
 
-}else{
+let unit={
+pompes:"pompes",
+squats:"squats",
+abdos:"abdos",
+marche:"min"
+};
 
-button.textContent="VALIDER";
-button.disabled=false;
-button.style.opacity="1";
+let oldText=input.parentElement.parentElement.querySelector(".objective");
+
+if(oldText){
+
+oldText.textContent=
+"Objectif : "+objective[name]+" • Réalisé : "+total+" "+unit[name];
 
 }
+
+button.textContent="AJOUTER";
+
+button.disabled=false;
+
+button.style.opacity="1";
 
 });
 
