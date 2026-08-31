@@ -334,9 +334,11 @@ overflow:hidden;
 
 import * as THREE from "three";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js";
+
 window.addEventListener("DOMContentLoaded", () => {
 
 const container = document.getElementById("character3D");
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -360,28 +362,6 @@ container.clientHeight
 
 container.appendChild(renderer.domElement);
 
-const loader = new GLTFLoader();
-
-loader.load(
-"Superhero_Male_FullBody.gltf",
-function(gltf){
-
-const character = gltf.scene;
-
-character.scale.set(1,1,1);
-
-character.position.y=0;
-
-scene.add(character);
-
-},
-undefined,
-function(error){
-
-alert("ERREUR 3D : " + error.message);
-}
-);
-
 const light = new THREE.DirectionalLight(
 0xffffff,
 2
@@ -398,11 +378,36 @@ const ambient = new THREE.AmbientLight(
 
 scene.add(ambient);
 
+const loader = new GLTFLoader();
+
+loader.load(
+"Superhero_Male_FullBody.gltf",
+
+function(gltf){
+
+const character = gltf.scene;
+
+character.scale.set(1,1,1);
+
+character.position.y = 0;
+
+scene.add(character);
+
+},
+
+undefined,
+
+function(error){
+
+alert("ERREUR 3D : " + error.message);
+
+}
+
+);
+
 function animate(){
 
 requestAnimationFrame(animate);
-
-sphere.rotation.y += 0.01;
 
 renderer.render(scene,camera);
 
@@ -411,8 +416,6 @@ renderer.render(scene,camera);
 animate();
 
 });
-
-</script>
 
 </script>
 
