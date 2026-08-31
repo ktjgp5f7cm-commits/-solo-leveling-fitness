@@ -334,6 +334,74 @@ overflow:hidden;
 
 import * as THREE from "three";
 
+const container = document.getElementById("character3D");
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+45,
+container.clientWidth / container.clientHeight,
+0.1,
+100
+);
+
+camera.position.z = 4;
+
+const renderer = new THREE.WebGLRenderer({
+antialias:true,
+alpha:true
+});
+
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
+);
+
+container.appendChild(renderer.domElement);
+
+const geometry = new THREE.SphereGeometry(1,32,32);
+
+const material = new THREE.MeshStandardMaterial({
+color:0x555555
+});
+
+const sphere = new THREE.Mesh(
+geometry,
+material
+);
+
+scene.add(sphere);
+
+const light = new THREE.DirectionalLight(
+0xffffff,
+2
+);
+
+light.position.set(2,3,4);
+
+scene.add(light);
+
+const ambient = new THREE.AmbientLight(
+0xffffff,
+1
+);
+
+scene.add(ambient);
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+sphere.rotation.y += 0.01;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+</script>
+
 </script>
 
 </head>
