@@ -1,0 +1,11 @@
+{
+  "name": "Solo Fitness RPG",
+  "short_name": "Solo Fitness",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#060912",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait",
+  "description": "Transforme tes entraînements en aventure RPG.",
+  "icons": []
+}
