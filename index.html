@@ -796,16 +796,6 @@ data.water=0;
 
 function validateExercise(name,stat,xpPerUnit){
 
-checkNewDay();
-
-if(data.completed[name]){
-
-showMessage("Cette mission est déjà validée aujourd'hui.");
-
-return;
-
-}
-
 let input=document.getElementById(name+"Input");
 
 let amount=Number(input.value);
@@ -818,23 +808,29 @@ return;
 
 }
 
+if(!data.daily){
+
+data.daily={
+pompes:0,
+squats:0,
+abdos:0,
+marche:0
+};
+
+}
+
+data.daily[name]+=amount;
 
 let xp=Math.round(amount*xpPerUnit);
 
 data.xp+=xp;
-
 data.totalXP+=xp;
 
-data.questsDone++;
-
 data[stat]++;
-
-data.completed[name]=true;
 
 if(data.lastDay!==today()){
 
 data.streak++;
-
 data.lastDay=today();
 
 }
@@ -844,32 +840,51 @@ let oldLevel=data.level;
 while(data.xp>=data.level*100){
 
 data.xp-=data.level*100;
-
 data.level++;
 
 }
 
+input.value="";
+
 save();
 update();
 
-if(data.level>oldLevel){
+let objective={
+pompes:20,
+squats:30,
+abdos:20,
+marche:20
+};
+
+let total=data.daily[name];
+
+if(total>=objective[name]){
 
 showMessage(
-"⚔️ NIVEAU SUPÉRIEUR ! Tu es niveau "+data.level+" !"
+"🔥 OBJECTIF DÉPASSÉ ! "+total+" / "+objective[name]+" • +"+xp+" XP"
 );
 
 }else{
 
 showMessage(
-"✨ Mission validée ! +"+xp+" XP"
+"✨ +"+amount+" • +"+xp+" XP"
 );
 
 }
 
+if(data.level>oldLevel){
+
+setTimeout(()=>{
+
+showMessage(
+"⚔️ NIVEAU SUPÉRIEUR ! Niveau "+data.level+" !"
+);
+
+},1200);
+
 }
 
-
-function addWater(amount){
+}
 
 checkNewDay();
 
