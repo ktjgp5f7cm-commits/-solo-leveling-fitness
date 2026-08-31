@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solo Fitness</title>
+<style>
+body{margin:0;background:#080b14;color:white;font-family:Arial,sans-serif}
+.app{max-width:600px;margin:auto;padding:20px}
+h1{text-align:center;color:#8b5cf6}
+.card{background:#121827;border-radius:18px;padding:18px;margin:15px 0}
+.stat{display:flex;justify-content:space-between;margin:10px 0}
+button{width:100%;padding:14px;margin-top:10px;border:0;border-radius:12px;background:#7c3aed;color:white;font-size:16px;font-weight:bold}
+button:active{transform:scale(.98)}
+.quest{border:1px solid #293247;border-radius:14px;padding:15px;margin:10px 0}
+.done{opacity:.5}
+.progress{height:12px;background:#293247;border-radius:10px;overflow:hidden}
+.bar{height:100%;background:#8b5cf6;width:0%}
+.small{color:#9ca3af;font-size:14px}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<h1>⚔️ SOLO FITNESS</h1>
+<p style="text-align:center" class="small">Deviens plus fort. Monte de niveau.</p>
+
+<div class="card">
+<h2>👤 Chasseur</h2>
+<div class="stat"><span>Niveau</span><b id="level">1</b></div>
+<div class="stat"><span>XP</span><b id="xp">0 / 100</b></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<div class="card">
+<h2>📜 Quêtes du jour</h2>
+
+<div class="quest" id="q1">
+<b>💪 20 pompes</b>
+<p class="small">+50 XP</p>
+<button onclick="completeQuest('q1',50)">TERMINER</button>
+</div>
+
+<div class="quest" id="q2">
+<b>🦵 30 squats</b>
+<p class="small">+50 XP</p>
+<button onclick="completeQuest('q2',50)">TERMINER</button>
+</div>
+
+<div class="quest" id="q3">
+<b>🔥 20 abdos</b>
+<p class="small">+50 XP</p>
+<button onclick="completeQuest('q3',50)">TERMINER</button>
+</div>
+
+<div class="quest" id="q4">
+<b>🏃 10 minutes de marche</b>
+<p class="small">+50 XP</p>
+<button onclick="completeQuest('q4',50)">TERMINER</button>
+</div>
+
+</div>
+
+<div class="card">
+<h2>🏆 Statistiques</h2>
+<div class="stat"><span>Quêtes terminées</span><b id="quests">0</b></div>
+<div class="stat"><span>XP total</span><b id="totalxp">0</b></div>
+<div class="stat"><span>🔥 Série</span><b id="streak">0 jour</b></div>
+</div>
+
+</div>
+
+<script>
+let data=JSON.parse(localStorage.getItem("soloFitness"))||{
+level:1,xp:0,totalxp:0,quests:0,streak:0,done:[]
+};
+
+function save(){
+localStorage.setItem("soloFitness",JSON.stringify(data));
+}
+
+function update(){
+document.getElementById("level").textContent=data.level;
+document.getElementById("xp").textContent=data.xp+" / "+(data.level*100);
+document.getElementById("totalxp").textContent=data.totalxp;
+document.getElementById("quests").textContent=data.quests;
+document.getElementById("streak").textContent=data.streak+" jour";
+
+let percent=(data.xp/(data.level*100))*100;
+document.getElementById("bar").style.width=percent+"%";
+
+["q1","q2","q3","q4"].forEach(id=>{
+if(data.done.includes(id)){
+document.getElementById(id).classList.add("done");
+document.querySelector("#"+id+" button").textContent="✅ TERMINÉ";
+document.querySelector("#"+id+" button").disabled=true;
+}
+});
+}
+
+function completeQuest(id,xp){
+if(data.done.includes(id))return;
+
+data.done.push(id);
+data.quests++;
+data.xp+=xp;
+data.totalxp+=xp;
+
+while(data.xp>=data.level*100){
+data.xp-=data.level*100;
+data.level++;
+alert("⚔️ NIVEAU SUPÉRIEUR !\n\nTu es maintenant niveau "+data.level+" !");
+}
+
+save();
+update();
+}
+
+update();
+</script>
+
+</body>
+</html>
