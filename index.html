@@ -3,202 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b14">
-<title>Solo Fitness</title>
+<meta name="theme-color" content="#070a12">
+<title>Solo Fitness RPG</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:#070a12;
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+margin:0;
+background:#060912;
+color:white;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 .app{
-  max-width:620px;
-  margin:auto;
-  padding:20px 16px 40px;
+max-width:620px;
+margin:auto;
+padding:18px 15px 40px;
 }
 
 .header{
-  text-align:center;
-  padding:15px 0 20px;
+text-align:center;
+padding:15px 0 18px;
 }
 
 .logo{
-  font-size:34px;
-  font-weight:900;
-  letter-spacing:2px;
+font-size:30px;
+font-weight:900;
+letter-spacing:2px;
 }
 
 .subtitle{
-  color:#8d96aa;
-  margin-top:6px;
+color:#8993a8;
+margin-top:5px;
 }
 
 .card{
-  background:linear-gradient(145deg,#121827,#0d1220);
-  border:1px solid #202a3d;
-  border-radius:20px;
-  padding:20px;
-  margin:14px 0;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+background:linear-gradient(145deg,#121827,#0c111d);
+border:1px solid #202b40;
+border-radius:20px;
+padding:18px;
+margin:14px 0;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
 .player{
-  display:flex;
-  align-items:center;
-  gap:16px;
+display:flex;
+gap:15px;
+align-items:center;
 }
 
 .avatar{
-  width:75px;
-  height:75px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  background:linear-gradient(145deg,#24115a,#11182e);
-  border:1px solid #5336a5;
+width:78px;
+height:78px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+background:#11182b;
+border:1px solid #6840c5;
 }
 
-.player-info{
-  flex:1;
+.playerInfo{
+flex:1;
+}
+
+.name{
+font-size:21px;
+font-weight:900;
+}
+
+.rank{
+display:inline-block;
+margin-top:5px;
+padding:4px 10px;
+border-radius:8px;
+background:#24164b;
+color:#c4a7ff;
+font-weight:900;
+font-size:13px;
 }
 
 .level{
-  font-size:14px;
-  color:#a9b0c2;
+margin-top:10px;
+font-size:14px;
+color:#9ba5b8;
 }
 
-.level-number{
-  font-size:30px;
-  font-weight:900;
+.levelNumber{
+font-size:27px;
+font-weight:900;
 }
 
-.xp-text{
-  display:flex;
-  justify-content:space-between;
-  color:#a9b0c2;
-  font-size:13px;
-  margin:10px 0 6px;
+.xpText{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+color:#9ba5b8;
+margin:8px 0 5px;
 }
 
 .progress{
-  height:12px;
-  background:#242c3c;
-  border-radius:20px;
-  overflow:hidden;
+height:11px;
+background:#252e40;
+border-radius:20px;
+overflow:hidden;
 }
 
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#7c3aed,#a855f7);
-  border-radius:20px;
-  transition:.4s;
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#7c3aed,#c084fc);
+transition:.4s;
 }
 
 .title{
-  font-size:21px;
-  margin:0 0 15px;
-}
-
-.quest{
-  background:#0a0f1b;
-  border:1px solid #242d40;
-  border-radius:16px;
-  padding:16px;
-  margin:11px 0;
-}
-
-.quest-row{
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-
-.quest-icon{
-  font-size:28px;
-}
-
-.quest-info{
-  flex:1;
-}
-
-.quest-name{
-  font-weight:800;
-}
-
-.quest-reward{
-  color:#a855f7;
-  font-size:13px;
-  margin-top:4px;
-}
-
-button{
-  border:0;
-  border-radius:11px;
-  padding:10px 13px;
-  background:#7c3aed;
-  color:white;
-  font-weight:800;
-  cursor:pointer;
-}
-
-button:active{
-  transform:scale(.96);
-}
-
-button.done{
-  background:#243047;
-  color:#8f9ab0;
+margin:0 0 14px;
+font-size:21px;
 }
 
 .stats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:11px;
 }
 
 .stat{
-  background:#0a0f1b;
-  border:1px solid #242d40;
-  border-radius:15px;
-  padding:15px;
-  text-align:center;
+background:#0a0f1b;
+border:1px solid #252f43;
+border-radius:15px;
+padding:14px;
 }
 
-.stat-icon{
-  font-size:24px;
+.statTop{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.stat-number{
-  font-size:24px;
-  font-weight:900;
-  margin-top:4px;
+.statName{
+font-weight:800;
 }
 
-.stat-label{
-  color:#8d96aa;
-  font-size:12px;
+.statNumber{
+font-size:25px;
+font-weight:900;
+margin-top:5px;
 }
 
-.reset{
-  width:100%;
-  margin-top:10px;
-  background:#20293a;
-  color:#aab2c2;
+.plus{
+background:#7c3aed;
+width:35px;
+height:35px;
+padding:0;
+font-size:20px;
+}
+
+.points{
+text-align:center;
+margin-top:15px;
+color:#c7b7ff;
+font-weight:800;
+}
+
+.quest{
+background:#090e19;
+border:1px solid #252f43;
+border-radius:15px;
+padding:14px;
+margin:10px 0;
+}
+
+.questRow{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.icon{
+font-size:29px;
+}
+
+.questInfo{
+flex:1;
+}
+
+.questName{
+font-weight:900;
+}
+
+.reward{
+color:#b68cff;
+font-size:13px;
+margin-top:3px;
+}
+
+button{
+border:0;
+border-radius:11px;
+padding:10px 13px;
+background:#7c3aed;
+color:white;
+font-weight:900;
+}
+
+button:active{
+transform:scale(.96);
+}
+
+.done{
+background:#263047;
+color:#8994a9;
 }
 
 .message{
-  text-align:center;
-  color:#a855f7;
-  font-weight:800;
-  min-height:24px;
+text-align:center;
+min-height:25px;
+color:#c084fc;
+font-weight:900;
+}
+
+.input{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #303b52;
+background:#080d17;
+color:white;
+font-size:16px;
+margin:8px 0;
+}
+
+.full{
+width:100%;
+margin-top:8px;
+}
+
+.reset{
+width:100%;
+background:#202a3c;
+color:#aeb7c7;
+margin-top:10px;
+}
+
+.hidden{
+display:none;
+}
+
+.warning{
+color:#8d98ad;
+font-size:12px;
+text-align:center;
+margin-top:10px;
 }
 </style>
 </head>
@@ -207,273 +264,488 @@ button.done{
 
 <div class="app">
 
-  <div class="header">
-    <div class="logo">⚔️ SOLO FITNESS</div>
-    <div class="subtitle">Deviens plus fort. Monte de niveau.</div>
-  </div>
+<div class="header">
+<div class="logo">⚔️ SOLO FITNESS</div>
+<div class="subtitle">Le Système t'attend.</div>
+</div>
 
-  <div class="card">
-    <div class="player">
+<div id="creation" class="card">
 
-      <div class="avatar">🧍</div>
+<h2 class="title">👤 Création du chasseur</h2>
 
-      <div class="player-info">
-        <div class="level">NIVEAU DU CHASSEUR</div>
-        <div class="level-number">Niveau <span id="level">1</span></div>
+<p>Entre ton nom de chasseur :</p>
 
-        <div class="xp-text">
-          <span>XP</span>
-          <span id="xpText">0 / 100</span>
-        </div>
+<input id="nameInput" class="input" placeholder="Ex : Jessy">
 
-        <div class="progress">
-          <div class="progress-bar" id="xpBar"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="message" id="message"></div>
-
-  <div class="card">
-    <h2 class="title">📜 Quêtes quotidiennes</h2>
-
-    <div class="quest" id="quest-pompes">
-      <div class="quest-row">
-        <div class="quest-icon">💪</div>
-        <div class="quest-info">
-          <div class="quest-name">20 pompes</div>
-          <div class="quest-reward">+50 XP</div>
-        </div>
-        <button onclick="completeQuest('pompes',50)">FAIRE</button>
-      </div>
-    </div>
-
-    <div class="quest" id="quest-squats">
-      <div class="quest-row">
-        <div class="quest-icon">🦵</div>
-        <div class="quest-info">
-          <div class="quest-name">30 squats</div>
-          <div class="quest-reward">+50 XP</div>
-        </div>
-        <button onclick="completeQuest('squats',50)">FAIRE</button>
-      </div>
-    </div>
-
-    <div class="quest" id="quest-abdos">
-      <div class="quest-row">
-        <div class="quest-icon">🔥</div>
-        <div class="quest-info">
-          <div class="quest-name">20 abdos</div>
-          <div class="quest-reward">+50 XP</div>
-        </div>
-        <button onclick="completeQuest('abdos',50)">FAIRE</button>
-      </div>
-    </div>
-
-    <div class="quest" id="quest-marche">
-      <div class="quest-row">
-        <div class="quest-icon">🏃</div>
-        <div class="quest-info">
-          <div class="quest-name">10 min de marche</div>
-          <div class="quest-reward">+50 XP</div>
-        </div>
-        <button onclick="completeQuest('marche',50)">FAIRE</button>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="card">
-    <h2 class="title">📊 Statistiques</h2>
-
-    <div class="stats">
-
-      <div class="stat">
-        <div class="stat-icon">⭐</div>
-        <div class="stat-number" id="totalXP">0</div>
-        <div class="stat-label">XP TOTAL</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-icon">🏆</div>
-        <div class="stat-number" id="questsDone">0</div>
-        <div class="stat-label">QUÊTES</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-icon">🔥</div>
-        <div class="stat-number" id="streak">0</div>
-        <div class="stat-label">JOURS DE SÉRIE</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-icon">⚔️</div>
-        <div class="stat-number" id="power">10</div>
-        <div class="stat-label">PUISSANCE</div>
-      </div>
-
-    </div>
-
-    <button class="reset" onclick="resetGame()">Réinitialiser la progression</button>
-
-  </div>
+<button class="full" onclick="createPlayer()">
+COMMENCER L'AVENTURE ⚔️
+</button>
 
 </div>
 
+
+<div id="game" class="hidden">
+
+<div class="card">
+
+<div class="player">
+
+<div class="avatar">🧍</div>
+
+<div class="playerInfo">
+
+<div class="name" id="playerName"></div>
+
+<div class="rank">
+RANG <span id="rank">E</span>
+</div>
+
+<div class="level">
+NIVEAU
+</div>
+
+<div class="levelNumber">
+<span id="level">1</span>
+</div>
+
+<div class="xpText">
+<span>XP</span>
+<span id="xpText">0 / 100</span>
+</div>
+
+<div class="progress">
+<div class="bar" id="xpBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="message" id="message"></div>
+
+
+<div class="card">
+
+<h2 class="title">📊 Caractéristiques</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="statTop">
+<div class="statName">⚔️ Force</div>
+<button class="plus" onclick="addPoint('force')">+</button>
+</div>
+<div class="statNumber" id="force">5</div>
+</div>
+
+<div class="stat">
+<div class="statTop">
+<div class="statName">🛡️ Endurance</div>
+<button class="plus" onclick="addPoint('endurance')">+</button>
+</div>
+<div class="statNumber" id="endurance">5</div>
+</div>
+
+<div class="stat">
+<div class="statTop">
+<div class="statName">⚡ Agilité</div>
+<button class="plus" onclick="addPoint('agilite')">+</button>
+</div>
+<div class="statNumber" id="agilite">5</div>
+</div>
+
+<div class="stat">
+<div class="statTop">
+<div class="statName">❤️ Vitalité</div>
+<button class="plus" onclick="addPoint('vitalite')">+</button>
+</div>
+<div class="statNumber" id="vitalite">5</div>
+</div>
+
+</div>
+
+<div class="points">
+Points disponibles : <span id="points">0</span>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2 class="title">📜 Quêtes quotidiennes</h2>
+
+<div class="quest" id="q-pompes">
+
+<div class="questRow">
+
+<div class="icon">💪</div>
+
+<div class="questInfo">
+<div class="questName">20 pompes</div>
+<div class="reward">+50 XP • +1 Force</div>
+</div>
+
+<button onclick="quest('pompes',50,'force')">
+FAIRE
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest" id="q-squats">
+
+<div class="questRow">
+
+<div class="icon">🦵</div>
+
+<div class="questInfo">
+<div class="questName">30 squats</div>
+<div class="reward">+50 XP • +1 Endurance</div>
+</div>
+
+<button onclick="quest('squats',50,'endurance')">
+FAIRE
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest" id="q-abdos">
+
+<div class="questRow">
+
+<div class="icon">🔥</div>
+
+<div class="questInfo">
+<div class="questName">20 abdos</div>
+<div class="reward">+50 XP • +1 Vitalité</div>
+</div>
+
+<button onclick="quest('abdos',50,'vitalite')">
+FAIRE
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest" id="q-marche">
+
+<div class="questRow">
+
+<div class="icon">🏃</div>
+
+<div class="questInfo">
+<div class="questName">10 min de marche</div>
+<div class="reward">+50 XP • +1 Agilité</div>
+</div>
+
+<button onclick="quest('marche',50,'agilite')">
+FAIRE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2 class="title">🏆 Progression</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="statName">⭐ XP total</div>
+<div class="statNumber" id="totalXP">0</div>
+</div>
+
+<div class="stat">
+<div class="statName">🏆 Quêtes</div>
+<div class="statNumber" id="questsDone">0</div>
+</div>
+
+<div class="stat">
+<div class="statName">🔥 Série</div>
+<div class="statNumber" id="streak">0</div>
+</div>
+
+<div class="stat">
+<div class="statName">⚔️ Puissance</div>
+<div class="statNumber" id="power">20</div>
+</div>
+
+</div>
+
+<button class="reset" onclick="resetGame()">
+Réinitialiser le personnage
+</button>
+
+</div>
+
+<p class="warning">
+⚠️ Adapte toujours les exercices à ton niveau et arrête-toi en cas de douleur.
+</p>
+
+</div>
+
+</div>
+
+
 <script>
 
-let data = JSON.parse(localStorage.getItem("soloFitness")) || {
-  level:1,
-  xp:0,
-  totalXP:0,
-  questsDone:0,
-  streak:0,
-  lastDay:"",
-  completed:{}
+let data = JSON.parse(localStorage.getItem("soloFitnessRPG"));
+
+function createPlayer(){
+
+let name = document.getElementById("nameInput").value.trim();
+
+if(!name){
+alert("Entre un nom de chasseur.");
+return;
+}
+
+data={
+name:name,
+level:1,
+xp:0,
+totalXP:0,
+questsDone:0,
+streak:0,
+lastDay:"",
+points:0,
+force:5,
+endurance:5,
+agilite:5,
+vitalite:5,
+completed:{}
 };
 
-function save(){
-  localStorage.setItem("soloFitness",JSON.stringify(data));
+save();
+
+showGame();
+
 }
+
+
+function save(){
+
+localStorage.setItem(
+"soloFitnessRPG",
+JSON.stringify(data)
+);
+
+}
+
+
+function showGame(){
+
+document.getElementById("creation").classList.add("hidden");
+document.getElementById("game").classList.remove("hidden");
+
+update();
+
+}
+
+
+function rank(){
+
+if(data.level>=50)return"S";
+if(data.level>=35)return"A";
+if(data.level>=25)return"B";
+if(data.level>=15)return"C";
+if(data.level>=8)return"D";
+
+return"E";
+
+}
+
+
+function quest(name,reward,stat){
+
+if(data.completed[name]){
+return;
+}
+
+data.completed[name]=true;
+
+data.xp+=reward;
+data.totalXP+=reward;
+data.questsDone++;
+
+data[stat]++;
+data.points++;
+
+if(data.lastDay!==today()){
+
+data.streak++;
+data.lastDay=today();
+
+}
+
+let levelUp=false;
+
+while(data.xp>=data.level*100){
+
+data.xp-=data.level*100;
+data.level++;
+data.points+=3;
+levelUp=true;
+
+}
+
+save();
+update();
+
+if(levelUp){
+
+document.getElementById("message").textContent=
+"⚔️ LE SYSTÈME : NIVEAU "+data.level+" !";
+
+}else{
+
+document.getElementById("message").textContent=
+"✨ QUÊTE TERMINÉE • +"+reward+" XP";
+
+}
+
+setTimeout(()=>{
+
+document.getElementById("message").textContent="";
+
+},3000);
+
+}
+
+
+function addPoint(stat){
+
+if(data.points<=0){
+
+document.getElementById("message").textContent=
+"❌ Aucun point disponible.";
+
+setTimeout(()=>{
+document.getElementById("message").textContent="";
+},2000);
+
+return;
+
+}
+
+data[stat]++;
+data.points--;
+
+save();
+update();
+
+}
+
 
 function today(){
-  return new Date().toISOString().slice(0,10);
-}
 
-function updateStreak(){
-
-  let current = today();
-
-  if(data.lastDay !== current){
-    data.completed = {};
-  }
+return new Date().toISOString().slice(0,10);
 
 }
 
-function completeQuest(name,reward){
-
-  if(data.completed[name]){
-    return;
-  }
-
-  data.completed[name] = true;
-
-  data.xp += reward;
-  data.totalXP += reward;
-  data.questsDone++;
-
-  let leveledUp = false;
-
-  while(data.xp >= data.level * 100){
-
-    data.xp -= data.level * 100;
-    data.level++;
-    leveledUp = true;
-
-  }
-
-  if(data.lastDay !== today()){
-    data.streak++;
-    data.lastDay = today();
-  }
-
-  save();
-  update();
-
-  if(leveledUp){
-
-    document.getElementById("message").textContent =
-      "⚔️ NIVEAU SUPÉRIEUR ! Niveau " + data.level + " !";
-
-  }else{
-
-    document.getElementById("message").textContent =
-      "✨ Quête terminée ! +" + reward + " XP";
-
-  }
-
-  setTimeout(()=>{
-    document.getElementById("message").textContent="";
-  },3000);
-
-}
 
 function update(){
 
-  document.getElementById("level").textContent = data.level;
+document.getElementById("playerName").textContent=data.name;
 
-  let needed = data.level * 100;
+document.getElementById("level").textContent=data.level;
 
-  document.getElementById("xpText").textContent =
-    data.xp + " / " + needed;
+document.getElementById("rank").textContent=rank();
 
-  let percent = (data.xp / needed) * 100;
+let needed=data.level*100;
 
-  document.getElementById("xpBar").style.width =
-    Math.min(percent,100) + "%";
+document.getElementById("xpText").textContent=
+data.xp+" / "+needed;
 
-  document.getElementById("totalXP").textContent =
-    data.totalXP;
+document.getElementById("xpBar").style.width=
+(data.xp/needed*100)+"%";
 
-  document.getElementById("questsDone").textContent =
-    data.questsDone;
+document.getElementById("force").textContent=data.force;
 
-  document.getElementById("streak").textContent =
-    data.streak;
+document.getElementById("endurance").textContent=data.endurance;
 
-  document.getElementById("power").textContent =
-    10 + (data.level - 1) * 5;
+document.getElementById("agilite").textContent=data.agilite;
 
-  ["pompes","squats","abdos","marche"].forEach(name=>{
+document.getElementById("vitalite").textContent=data.vitalite;
 
-    let box = document.getElementById("quest-" + name);
-    let button = box.querySelector("button");
+document.getElementById("points").textContent=data.points;
 
-    if(data.completed[name]){
+document.getElementById("totalXP").textContent=data.totalXP;
 
-      box.style.opacity=".5";
-      button.textContent="✓ FAIT";
-      button.classList.add("done");
-      button.disabled=true;
+document.getElementById("questsDone").textContent=data.questsDone;
 
-    }else{
+document.getElementById("streak").textContent=data.streak;
 
-      box.style.opacity="1";
-      button.textContent="FAIRE";
-      button.classList.remove("done");
-      button.disabled=false;
+let power=
+data.force+
+data.endurance+
+data.agilite+
+data.vitalite;
 
-    }
+document.getElementById("power").textContent=power;
 
-  });
+
+["pompes","squats","abdos","marche"].forEach(q=>{
+
+let box=document.getElementById("q-"+q);
+
+let button=box.querySelector("button");
+
+if(data.completed[q]){
+
+box.style.opacity=".5";
+button.textContent="✓ FAIT";
+button.classList.add("done");
+button.disabled=true;
+
+}else{
+
+box.style.opacity="1";
+button.textContent="FAIRE";
+button.classList.remove("done");
+button.disabled=false;
 
 }
+
+});
+
+}
+
 
 function resetGame(){
 
-  if(confirm("Supprimer toute ta progression ?")){
+if(confirm("Es-tu sûr de vouloir supprimer ton personnage ?")){
 
-    localStorage.removeItem("soloFitness");
+localStorage.removeItem("soloFitnessRPG");
 
-    data={
-      level:1,
-      xp:0,
-      totalXP:0,
-      questsDone:0,
-      streak:0,
-      lastDay:"",
-      completed:{}
-    };
-
-    update();
-
-  }
+location.reload();
 
 }
 
-update();
+}
+
+
+if(data){
+
+showGame();
+
+}
 
 </script>
 
