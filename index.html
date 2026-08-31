@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070912">
+
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Solo Fitness">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070a12">
+
 <title>Solo Fitness RPG</title>
 
 <style>
@@ -21,14 +23,14 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
 .app{
-max-width:620px;
+max-width:650px;
 margin:auto;
-padding:18px 15px 40px;
+padding:18px 15px 45px;
 }
 
 .header{
 text-align:center;
-padding:15px 0 18px;
+padding:15px 0 20px;
 }
 
 .logo{
@@ -44,17 +46,56 @@ margin-top:5px;
 
 .card{
 background:linear-gradient(145deg,#121827,#0c111d);
-border:1px solid #202b40;
+border:1px solid #222d42;
 border-radius:20px;
 padding:18px;
 margin:14px 0;
 box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
+.title{
+font-size:21px;
+margin:0 0 15px;
+}
+
+.input{
+width:100%;
+padding:14px;
+margin:6px 0;
+border-radius:12px;
+border:1px solid #303b52;
+background:#080d17;
+color:white;
+font-size:16px;
+}
+
+button{
+border:0;
+border-radius:11px;
+padding:11px 14px;
+background:#7c3aed;
+color:white;
+font-weight:900;
+}
+
+button:active{
+transform:scale(.96);
+}
+
+.full{
+width:100%;
+margin-top:10px;
+padding:15px;
+}
+
+.hidden{
+display:none;
+}
+
 .player{
 display:flex;
-gap:15px;
 align-items:center;
+gap:15px;
 }
 
 .avatar{
@@ -74,7 +115,7 @@ flex:1;
 }
 
 .name{
-font-size:21px;
+font-size:22px;
 font-weight:900;
 }
 
@@ -90,13 +131,13 @@ font-size:13px;
 }
 
 .level{
-margin-top:10px;
-font-size:14px;
-color:#9ba5b8;
+margin-top:9px;
+font-size:13px;
+color:#929db1;
 }
 
 .levelNumber{
-font-size:27px;
+font-size:28px;
 font-weight:900;
 }
 
@@ -104,7 +145,7 @@ font-weight:900;
 display:flex;
 justify-content:space-between;
 font-size:13px;
-color:#9ba5b8;
+color:#929db1;
 margin:8px 0 5px;
 }
 
@@ -122,28 +163,42 @@ background:linear-gradient(90deg,#7c3aed,#c084fc);
 transition:.4s;
 }
 
-.title{
-margin:0 0 14px;
-font-size:21px;
+.profile{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
-.stats{
+.profileBox{
+background:#090e19;
+border:1px solid #252f43;
+border-radius:14px;
+padding:13px;
+text-align:center;
+}
+
+.profileValue{
+font-size:20px;
+font-weight:900;
+}
+
+.profileLabel{
+font-size:12px;
+color:#8d96aa;
+margin-top:3px;
+}
+
+.statGrid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:11px;
 }
 
 .stat{
-background:#0a0f1b;
+background:#090e19;
 border:1px solid #252f43;
 border-radius:15px;
 padding:14px;
-}
-
-.statTop{
-display:flex;
-justify-content:space-between;
-align-items:center;
 }
 
 .statName{
@@ -156,36 +211,21 @@ font-weight:900;
 margin-top:5px;
 }
 
-.plus{
-background:#7c3aed;
-width:35px;
-height:35px;
-padding:0;
-font-size:20px;
-}
-
-.points{
-text-align:center;
-margin-top:15px;
-color:#c7b7ff;
-font-weight:800;
-}
-
 .quest{
 background:#090e19;
 border:1px solid #252f43;
-border-radius:15px;
-padding:14px;
-margin:10px 0;
+border-radius:16px;
+padding:15px;
+margin:11px 0;
 }
 
-.questRow{
+.questHeader{
 display:flex;
 align-items:center;
 gap:12px;
 }
 
-.icon{
+.questIcon{
 font-size:29px;
 }
 
@@ -197,28 +237,62 @@ flex:1;
 font-weight:900;
 }
 
-.reward{
-color:#b68cff;
-font-size:13px;
+.objective{
+font-size:12px;
+color:#8f99ad;
 margin-top:3px;
 }
 
-button{
-border:0;
-border-radius:11px;
-padding:10px 13px;
-background:#7c3aed;
+.counter{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:13px;
+}
+
+.counter input{
+width:80px;
+padding:10px;
+border-radius:10px;
+border:1px solid #303b52;
+background:#070c15;
 color:white;
+font-size:17px;
+text-align:center;
 font-weight:900;
 }
 
-button:active{
-transform:scale(.96);
+.counter span{
+color:#8d96aa;
 }
 
-.done{
-background:#263047;
-color:#8994a9;
+.validate{
+margin-left:auto;
+}
+
+.water{
+text-align:center;
+}
+
+.waterNumber{
+font-size:36px;
+font-weight:900;
+margin:8px 0;
+}
+
+.waterTarget{
+color:#8f99ad;
+}
+
+.waterButtons{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:8px;
+margin-top:15px;
+}
+
+.waterButtons button{
+padding:13px 5px;
 }
 
 .message{
@@ -228,22 +302,6 @@ color:#c084fc;
 font-weight:900;
 }
 
-.input{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid #303b52;
-background:#080d17;
-color:white;
-font-size:16px;
-margin:8px 0;
-}
-
-.full{
-width:100%;
-margin-top:8px;
-}
-
 .reset{
 width:100%;
 background:#202a3c;
@@ -251,15 +309,11 @@ color:#aeb7c7;
 margin-top:10px;
 }
 
-.hidden{
-display:none;
-}
-
 .warning{
-color:#8d98ad;
 font-size:12px;
+color:#7f899c;
 text-align:center;
-margin-top:10px;
+line-height:1.5;
 }
 </style>
 </head>
@@ -273,22 +327,34 @@ margin-top:10px;
 <div class="subtitle">Le Système t'attend.</div>
 </div>
 
+
+<!-- CREATION -->
+
 <div id="creation" class="card">
 
 <h2 class="title">👤 Création du chasseur</h2>
 
-<p>Entre ton nom de chasseur :</p>
+<input id="nameInput" class="input" placeholder="Pseudo">
 
-<input id="nameInput" class="input" placeholder="Ex : Jessy">
+<input id="ageInput" class="input" type="number" min="1" max="120" placeholder="Âge">
+
+<input id="weightInput" class="input" type="number" min="1" max="500" placeholder="Poids en kg">
+
+<input id="heightInput" class="input" type="number" min="50" max="250" placeholder="Taille en cm">
 
 <button class="full" onclick="createPlayer()">
-COMMENCER L'AVENTURE ⚔️
+⚔️ CRÉER MON CHASSEUR
 </button>
 
 </div>
 
 
+<!-- JEU -->
+
 <div id="game" class="hidden">
+
+
+<!-- PERSONNAGE -->
 
 <div class="card">
 
@@ -331,144 +397,247 @@ NIVEAU
 <div class="message" id="message"></div>
 
 
+<!-- PROFIL -->
+
+<div class="card">
+
+<h2 class="title">📋 Profil</h2>
+
+<div class="profile">
+
+<div class="profileBox">
+<div class="profileValue" id="age"></div>
+<div class="profileLabel">ÂGE</div>
+</div>
+
+<div class="profileBox">
+<div class="profileValue" id="weight"></div>
+<div class="profileLabel">POIDS</div>
+</div>
+
+<div class="profileBox">
+<div class="profileValue" id="height"></div>
+<div class="profileLabel">TAILLE</div>
+</div>
+
+<div class="profileBox">
+<div class="profileValue" id="weightStart"></div>
+<div class="profileLabel">POIDS INITIAL</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUETES -->
+
+<div class="card">
+
+<h2 class="title">📜 Missions du jour</h2>
+
+
+<div class="quest">
+
+<div class="questHeader">
+
+<div class="questIcon">💪</div>
+
+<div class="questInfo">
+
+<div class="questName">Pompes</div>
+
+<div class="objective">
+Objectif : 20 • +2 XP par pompe
+</div>
+
+</div>
+
+</div>
+
+<div class="counter">
+
+<input id="pompesInput" type="number" min="0" placeholder="0">
+
+<span>réalisées</span>
+
+<button class="validate" onclick="validateExercise('pompes','force',2)">
+VALIDER
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest">
+
+<div class="questHeader">
+
+<div class="questIcon">🦵</div>
+
+<div class="questInfo">
+
+<div class="questName">Squats</div>
+
+<div class="objective">
+Objectif : 30 • +1.5 XP par squat
+</div>
+
+</div>
+
+</div>
+
+<div class="counter">
+
+<input id="squatsInput" type="number" min="0" placeholder="0">
+
+<span>réalisés</span>
+
+<button class="validate" onclick="validateExercise('squats','endurance',1.5)">
+VALIDER
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest">
+
+<div class="questHeader">
+
+<div class="questIcon">🔥</div>
+
+<div class="questInfo">
+
+<div class="questName">Abdos</div>
+
+<div class="objective">
+Objectif : 20 • +2 XP par abdo
+</div>
+
+</div>
+
+</div>
+
+<div class="counter">
+
+<input id="abdosInput" type="number" min="0" placeholder="0">
+
+<span>réalisés</span>
+
+<button class="validate" onclick="validateExercise('abdos','vitalite',2)">
+VALIDER
+</button>
+
+</div>
+
+</div>
+
+
+<div class="quest">
+
+<div class="questHeader">
+
+<div class="questIcon">🏃</div>
+
+<div class="questInfo">
+
+<div class="questName">Marche</div>
+
+<div class="objective">
+Objectif : 20 min • +5 XP par minute
+</div>
+
+</div>
+
+</div>
+
+<div class="counter">
+
+<input id="marcheInput" type="number" min="0" placeholder="0">
+
+<span>minutes</span>
+
+<button class="validate" onclick="validateExercise('marche','agilite',5)">
+VALIDER
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- EAU -->
+
+<div class="card water">
+
+<h2 class="title">💧 Hydratation</h2>
+
+<div class="waterNumber">
+<span id="water">0</span> ml
+</div>
+
+<div class="waterTarget">
+Objectif du jour : 3000 ml
+</div>
+
+<div class="waterButtons">
+
+<button onclick="addWater(250)">+250 ml</button>
+
+<button onclick="addWater(500)">+500 ml</button>
+
+<button onclick="addWater(1000)">+1 L</button>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
 <div class="card">
 
 <h2 class="title">📊 Caractéristiques</h2>
 
-<div class="stats">
+<div class="statGrid">
 
 <div class="stat">
-<div class="statTop">
 <div class="statName">⚔️ Force</div>
-<button class="plus" onclick="addPoint('force')">+</button>
-</div>
 <div class="statNumber" id="force">5</div>
 </div>
 
 <div class="stat">
-<div class="statTop">
 <div class="statName">🛡️ Endurance</div>
-<button class="plus" onclick="addPoint('endurance')">+</button>
-</div>
 <div class="statNumber" id="endurance">5</div>
 </div>
 
 <div class="stat">
-<div class="statTop">
 <div class="statName">⚡ Agilité</div>
-<button class="plus" onclick="addPoint('agilite')">+</button>
-</div>
 <div class="statNumber" id="agilite">5</div>
 </div>
 
 <div class="stat">
-<div class="statTop">
 <div class="statName">❤️ Vitalité</div>
-<button class="plus" onclick="addPoint('vitalite')">+</button>
-</div>
 <div class="statNumber" id="vitalite">5</div>
 </div>
 
 </div>
 
-<div class="points">
-Points disponibles : <span id="points">0</span>
-</div>
-
 </div>
 
 
-<div class="card">
-
-<h2 class="title">📜 Quêtes quotidiennes</h2>
-
-<div class="quest" id="q-pompes">
-
-<div class="questRow">
-
-<div class="icon">💪</div>
-
-<div class="questInfo">
-<div class="questName">20 pompes</div>
-<div class="reward">+50 XP • +1 Force</div>
-</div>
-
-<button onclick="quest('pompes',50,'force')">
-FAIRE
-</button>
-
-</div>
-
-</div>
-
-
-<div class="quest" id="q-squats">
-
-<div class="questRow">
-
-<div class="icon">🦵</div>
-
-<div class="questInfo">
-<div class="questName">30 squats</div>
-<div class="reward">+50 XP • +1 Endurance</div>
-</div>
-
-<button onclick="quest('squats',50,'endurance')">
-FAIRE
-</button>
-
-</div>
-
-</div>
-
-
-<div class="quest" id="q-abdos">
-
-<div class="questRow">
-
-<div class="icon">🔥</div>
-
-<div class="questInfo">
-<div class="questName">20 abdos</div>
-<div class="reward">+50 XP • +1 Vitalité</div>
-</div>
-
-<button onclick="quest('abdos',50,'vitalite')">
-FAIRE
-</button>
-
-</div>
-
-</div>
-
-
-<div class="quest" id="q-marche">
-
-<div class="questRow">
-
-<div class="icon">🏃</div>
-
-<div class="questInfo">
-<div class="questName">10 min de marche</div>
-<div class="reward">+50 XP • +1 Agilité</div>
-</div>
-
-<button onclick="quest('marche',50,'agilite')">
-FAIRE
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- PROGRESSION -->
 
 <div class="card">
 
 <h2 class="title">🏆 Progression</h2>
 
-<div class="stats">
+<div class="statGrid">
 
 <div class="stat">
 <div class="statName">⭐ XP total</div>
@@ -476,7 +645,7 @@ FAIRE
 </div>
 
 <div class="stat">
-<div class="statName">🏆 Quêtes</div>
+<div class="statName">🏆 Missions</div>
 <div class="statNumber" id="questsDone">0</div>
 </div>
 
@@ -498,8 +667,9 @@ Réinitialiser le personnage
 
 </div>
 
+
 <p class="warning">
-⚠️ Adapte toujours les exercices à ton niveau et arrête-toi en cas de douleur.
+⚠️ Les objectifs sont des objectifs de jeu et ne remplacent pas les conseils d'un professionnel. Adapte toujours ton activité à ton niveau.
 </p>
 
 </div>
@@ -509,35 +679,53 @@ Réinitialiser le personnage
 
 <script>
 
-let data = JSON.parse(localStorage.getItem("soloFitnessRPG"));
+let data=JSON.parse(localStorage.getItem("soloFitnessRPG"));
 
 function createPlayer(){
 
-let name = document.getElementById("nameInput").value.trim();
+let name=document.getElementById("nameInput").value.trim();
+let age=Number(document.getElementById("ageInput").value);
+let weight=Number(document.getElementById("weightInput").value);
+let height=Number(document.getElementById("heightInput").value);
 
-if(!name){
-alert("Entre un nom de chasseur.");
+if(!name || !age || !weight || !height){
+
+alert("Remplis tous les champs.");
 return;
+
 }
 
 data={
 name:name,
+age:age,
+weight:weight,
+weightStart:weight,
+height:height,
+
 level:1,
 xp:0,
 totalXP:0,
+
 questsDone:0,
 streak:0,
 lastDay:"",
-points:0,
+
 force:5,
 endurance:5,
 agilite:5,
 vitalite:5,
-completed:{}
+
+water:0,
+
+completed:{
+pompes:false,
+squats:false,
+abdos:false,
+marche:false
+}
 };
 
 save();
-
 showGame();
 
 }
@@ -556,6 +744,7 @@ JSON.stringify(data)
 function showGame(){
 
 document.getElementById("creation").classList.add("hidden");
+
 document.getElementById("game").classList.remove("hidden");
 
 update();
@@ -563,96 +752,19 @@ update();
 }
 
 
-function rank(){
+function getRank(){
 
 if(data.level>=50)return"S";
+
 if(data.level>=35)return"A";
+
 if(data.level>=25)return"B";
+
 if(data.level>=15)return"C";
+
 if(data.level>=8)return"D";
 
 return"E";
-
-}
-
-
-function quest(name,reward,stat){
-
-if(data.completed[name]){
-return;
-}
-
-data.completed[name]=true;
-
-data.xp+=reward;
-data.totalXP+=reward;
-data.questsDone++;
-
-data[stat]++;
-data.points++;
-
-if(data.lastDay!==today()){
-
-data.streak++;
-data.lastDay=today();
-
-}
-
-let levelUp=false;
-
-while(data.xp>=data.level*100){
-
-data.xp-=data.level*100;
-data.level++;
-data.points+=3;
-levelUp=true;
-
-}
-
-save();
-update();
-
-if(levelUp){
-
-document.getElementById("message").textContent=
-"⚔️ LE SYSTÈME : NIVEAU "+data.level+" !";
-
-}else{
-
-document.getElementById("message").textContent=
-"✨ QUÊTE TERMINÉE • +"+reward+" XP";
-
-}
-
-setTimeout(()=>{
-
-document.getElementById("message").textContent="";
-
-},3000);
-
-}
-
-
-function addPoint(stat){
-
-if(data.points<=0){
-
-document.getElementById("message").textContent=
-"❌ Aucun point disponible.";
-
-setTimeout(()=>{
-document.getElementById("message").textContent="";
-},2000);
-
-return;
-
-}
-
-data[stat]++;
-data.points--;
-
-save();
-update();
 
 }
 
@@ -664,13 +776,158 @@ return new Date().toISOString().slice(0,10);
 }
 
 
+function checkNewDay(){
+
+if(data.lastDay!==today()){
+
+data.completed={
+pompes:false,
+squats:false,
+abdos:false,
+marche:false
+};
+
+data.water=0;
+
+}
+
+}
+
+
+function validateExercise(name,stat,xpPerUnit){
+
+checkNewDay();
+
+if(data.completed[name]){
+
+showMessage("Cette mission est déjà validée aujourd'hui.");
+
+return;
+
+}
+
+let input=document.getElementById(name+"Input");
+
+let amount=Number(input.value);
+
+if(amount<=0){
+
+showMessage("Entre la quantité réellement réalisée.");
+
+return;
+
+}
+
+
+let xp=Math.round(amount*xpPerUnit);
+
+data.xp+=xp;
+
+data.totalXP+=xp;
+
+data.questsDone++;
+
+data[stat]++;
+
+data.completed[name]=true;
+
+if(data.lastDay!==today()){
+
+data.streak++;
+
+data.lastDay=today();
+
+}
+
+let oldLevel=data.level;
+
+while(data.xp>=data.level*100){
+
+data.xp-=data.level*100;
+
+data.level++;
+
+}
+
+save();
+update();
+
+if(data.level>oldLevel){
+
+showMessage(
+"⚔️ NIVEAU SUPÉRIEUR ! Tu es niveau "+data.level+" !"
+);
+
+}else{
+
+showMessage(
+"✨ Mission validée ! +"+xp+" XP"
+);
+
+}
+
+}
+
+
+function addWater(amount){
+
+checkNewDay();
+
+data.water+=amount;
+
+if(data.water>10000){
+
+data.water=10000;
+
+}
+
+save();
+update();
+
+if(data.water>=3000){
+
+showMessage("💧 Objectif hydratation atteint !");
+
+}else{
+
+showMessage("💧 +"+amount+" ml");
+
+}
+
+}
+
+
+function showMessage(text){
+
+document.getElementById("message").textContent=text;
+
+setTimeout(()=>{
+
+document.getElementById("message").textContent="";
+
+},3000);
+
+}
+
+
 function update(){
+
+checkNewDay();
 
 document.getElementById("playerName").textContent=data.name;
 
 document.getElementById("level").textContent=data.level;
 
-document.getElementById("rank").textContent=rank();
+document.getElementById("rank").textContent=getRank();
+
+document.getElementById("age").textContent=data.age+" ans";
+
+document.getElementById("weight").textContent=data.weight+" kg";
+
+document.getElementById("height").textContent=data.height+" cm";
+
+document.getElementById("weightStart").textContent=data.weightStart+" kg";
+
 
 let needed=data.level*100;
 
@@ -678,7 +935,11 @@ document.getElementById("xpText").textContent=
 data.xp+" / "+needed;
 
 document.getElementById("xpBar").style.width=
-(data.xp/needed*100)+"%";
+Math.min((data.xp/needed)*100,100)+"%";
+
+
+document.getElementById("water").textContent=data.water;
+
 
 document.getElementById("force").textContent=data.force;
 
@@ -688,13 +949,13 @@ document.getElementById("agilite").textContent=data.agilite;
 
 document.getElementById("vitalite").textContent=data.vitalite;
 
-document.getElementById("points").textContent=data.points;
 
 document.getElementById("totalXP").textContent=data.totalXP;
 
 document.getElementById("questsDone").textContent=data.questsDone;
 
 document.getElementById("streak").textContent=data.streak;
+
 
 let power=
 data.force+
@@ -705,25 +966,23 @@ data.vitalite;
 document.getElementById("power").textContent=power;
 
 
-["pompes","squats","abdos","marche"].forEach(q=>{
+["pompes","squats","abdos","marche"].forEach(name=>{
 
-let box=document.getElementById("q-"+q);
+let input=document.getElementById(name+"Input");
 
-let button=box.querySelector("button");
+let button=input.parentElement.querySelector("button");
 
-if(data.completed[q]){
+if(data.completed[name]){
 
-box.style.opacity=".5";
 button.textContent="✓ FAIT";
-button.classList.add("done");
 button.disabled=true;
+button.style.opacity=".5";
 
 }else{
 
-box.style.opacity="1";
-button.textContent="FAIRE";
-button.classList.remove("done");
+button.textContent="VALIDER";
 button.disabled=false;
+button.style.opacity="1";
 
 }
 
@@ -734,7 +993,7 @@ button.disabled=false;
 
 function resetGame(){
 
-if(confirm("Es-tu sûr de vouloir supprimer ton personnage ?")){
+if(confirm("Supprimer définitivement ton personnage et toute ta progression ?")){
 
 localStorage.removeItem("soloFitnessRPG");
 
