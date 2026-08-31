@@ -359,18 +359,28 @@ container.clientHeight
 
 container.appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(1,32,32);
+const loader = new GLTFLoader();
 
-const material = new THREE.MeshStandardMaterial({
-color:0x555555
-});
+loader.load(
+"Superhero_male_fullbody.gltf",
+function(gltf){
 
-const sphere = new THREE.Mesh(
-geometry,
-material
+const character = gltf.scene;
+
+character.scale.set(1,1,1);
+
+character.position.y=0;
+
+scene.add(character);
+
+},
+undefined,
+function(error){
+
+console.log("Erreur chargement personnage :",error);
+
+}
 );
-
-scene.add(sphere);
 
 const light = new THREE.DirectionalLight(
 0xffffff,
