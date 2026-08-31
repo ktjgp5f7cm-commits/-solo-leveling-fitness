@@ -334,8 +334,9 @@ overflow:hidden;
 
 import * as THREE from "three";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js";
-const container = document.getElementById("character3D");
+window.addEventListener("DOMContentLoaded", () => {
 
+const container = document.getElementById("character3D");
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -408,6 +409,8 @@ renderer.render(scene,camera);
 }
 
 animate();
+
+});
 
 </script>
 
