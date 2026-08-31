@@ -898,26 +898,6 @@ showMessage(
 function addWater(){
 checkNewDay();
 
-data.water+=amount;
-
-if(data.water>10000){
-
-data.water=10000;
-
-}
-
-save();
-update();
-
-if(data.water>=3000){
-
-showMessage("💧 Objectif hydratation atteint !");
-
-}else{
-
-showMessage("💧 +"+amount+" ml");
-
-}
 
 }
 
