@@ -393,17 +393,9 @@ character.position.set(0,0,0);
 
 scene.add(character);
 
-const box = new THREE.Box3().setFromObject(character);
-const center = box.getCenter(new THREE.Vector3());
-const size = box.getSize(new THREE.Vector3());
+camera.position.set(0,1.5,6);
 
-character.position.sub(center);
-
-const maxSize = Math.max(size.x, size.y, size.z);
-
-camera.position.set(0, maxSize * 0.5, maxSize * 2.5);
-
-camera.lookAt(0, maxSize * 0.5, 0);
+camera.lookAt(0,1.2,0);
 
 },
 
